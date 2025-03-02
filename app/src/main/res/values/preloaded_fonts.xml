@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/acme</item>
+        <item>@font/alata</item>
+        <item>@font/bakbak_one</item>
+        <item>@font/charm</item>
+        <item>@font/galada</item>
+        <item>@font/playball</item>
+    </array>
+</resources>

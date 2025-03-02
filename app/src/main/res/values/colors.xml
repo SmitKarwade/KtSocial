@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="TextHead">#000000</color>
+    <color name="TextBody">#1C1C1C</color>
+    <color name="white">#FFFFFF</color>
+    <color name="hintColor">#8F8F8F</color>
+    <color name="hintFloatColor">#3A3A3A</color>
+    <color name="outline">#FFCD45AF</color>
+    <color name="primary">#FFFCFE</color>
+    <color name="endGrad">#FFC305BA</color>
+    <color name="midGrad">#FFFA0000</color>
+    <color name="startGrad">#FFFFB735</color>
+    <color name="loginText">#FF477C</color>
+    <color name="error">#FFFA0000</color>
+    <color name="createacc">#A947FF</color>
+    <color name="transparent">#00000000</color>
+    <color name="progressTrack">#8F8F8F</color>
+    <color name="progressIndicator">#424242</color>
+</resources>

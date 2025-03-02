@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/insta_home"
+        android:title="Home"
+        android:icon="@drawable/home_svg"
+        app:showAsAction="always"/>
+    <item android:id="@+id/search"
+        android:title="Searcg"
+        android:icon="@drawable/insta_search_svg"
+        app:showAsAction="always"/>
+    <item android:id="@+id/add"
+        android:title="Add"
+        android:icon="@drawable/insta_add_svg"
+        app:showAsAction="always"/>
+    <item android:id="@+id/reels"
+        android:title="Reels"
+        android:icon="@drawable/video_svg"
+        app:showAsAction="always"/>
+    <item android:id="@+id/cstm_icon"
+        android:icon="@drawable/common_user"
+        android:title="Profile"
+        app:showAsAction="always"/>
+</menu>

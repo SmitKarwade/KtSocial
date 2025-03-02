@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Instagram</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="BASE_URL">https://api.pexels.com/</string>
+    <string name="API_KEY">VWXBg6aiHvyRj5PX1yDPs7oEqBzx6LPUXZxxftHhIPjsuMtwJQl8AGiu</string>
+</resources>

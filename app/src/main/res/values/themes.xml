@@ -1,0 +1,43 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Instagram" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+    </style>
+
+    <style name="Theme.Instagram" parent="Base.Theme.Instagram" />
+
+    // light theme
+    <style name="lightTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    // Toolbar title
+    <style name="textAppearanceToolbar" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="fontFamily">@font/galada</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    // Error text position
+    <style name="errorTextAppearance">
+        <item name="android:gravity">left</item>
+        <item name="android:layout_marginStart">5dp</item>
+    </style>
+
+    // reel status bar
+    <style name="reelStatusBackground" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/TextHead</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+    </style>
+
+</resources>
