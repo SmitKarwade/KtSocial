@@ -1,0 +1,22 @@
+# Android Studio files
+.idea/
+*.iml
+.gradle/
+local.properties
+
+# Build Folders
+build/
+captures/
+output.json
+
+# Gradle
+gradle-app/
+gradle-wrapper.jar
+
+# Firebase
+google-services.json
+
+# Misc
+*.log
+*.DS_Store
+*.keystore
