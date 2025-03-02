@@ -1,15 +1,23 @@
+# Android Studio files
+.idea/
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+.gradle/
 local.properties
+
+# Build Folders
+build/
+captures/
+output.json
+
+# Gradle
+.gradle/
+gradle-app/
+gradle-wrapper.jar
+
+# Firebase
+google-services.json
+
+# Misc
+*.log
+*.DS_Store
+*.keystore
