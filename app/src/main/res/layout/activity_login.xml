@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="@color/primary"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login.LoginActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:background="@drawable/outline_grad"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        android:gravity="center_horizontal">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/insta_log_svg"
+            android:layout_marginTop="60dp"/>
+
+    </LinearLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
+        style="@style/Widget.Material3.CardView.Elevated"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="180dp"
+        android:background="@color/primary"
+        app:cardCornerRadius="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/login_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="login"
+            android:textColor="@color/loginText"
+            android:textSize="28sp"
+            app:fontFamily="@font/alata" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/email_text_layout"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="100dp"
+            android:hint="E-mail"
+            app:errorEnabled="true"
+            app:errorTextAppearance="@style/errorTextAppearance"
+            app:cursorColor="@color/hintColor"
+            android:textColorHint="@color/hintColor"
+            app:boxStrokeColor="@color/loginText"
+            app:boxStrokeWidth="2dp"
+            app:hintTextColor="@color/hintFloatColor"
+            app:startIconDrawable="@drawable/mail_svg">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/mail_text"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:inputType="textEmailAddress"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:paddingStart="45dp"
+                android:scrollHorizontally="true"
+                android:gravity="start"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/pass_text_layout"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="200dp"
+            app:endIconMode="password_toggle"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:errorEnabled="true"
+            app:errorTextAppearance="@style/errorTextAppearance"
+            app:boxStrokeErrorColor="@color/error"
+            android:hint="Password"
+            app:cursorColor="@color/hintColor"
+            android:textColorHint="@color/hintColor"
+            app:boxStrokeColor="@color/loginText"
+            app:boxStrokeWidth="2dp"
+            app:hintTextColor="@color/hintFloatColor"
+            app:startIconDrawable="@drawable/padlock_svg">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/pass_text"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:maxLength="10"
+                android:paddingStart="45dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/login_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="login"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="320dp"
+            android:padding="10dp"
+            android:textSize="20sp"
+            app:cornerRadius="8dp"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            app:strokeColor="@color/loginText"
+            app:strokeWidth="2dp"
+            android:textColor="@color/loginText"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/create_acc_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:text="Create Account"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="380dp"
+            android:textSize="18sp"
+            app:cornerRadius="8dp"
+            android:textColor="@color/hintFloatColor"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
