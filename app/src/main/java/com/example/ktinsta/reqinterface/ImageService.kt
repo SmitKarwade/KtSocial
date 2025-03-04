@@ -9,7 +9,15 @@ interface ImageService {
     @GET("v1/popular")
     suspend fun getImages(
         @Header("Authorization") api_key: String?,
-        @Query("page") page: Int,
-        @Query("per_page") per_page: Int
+        @Query("page") page: Int
     ): PexelResponse
 }
+
+//interface ImageService {
+//    @GET("v1/popular")
+//    suspend fun getImages(
+//        @Header("Authorization") api_key: String?,
+//        @Query("page") page: Int,
+//        @Query("per_page") per_page: Int
+//    ): PexelResponse
+//}
