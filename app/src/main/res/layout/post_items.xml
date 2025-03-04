@@ -7,7 +7,7 @@
     <data>
         <variable
             name="photos"
-            type="com.example.instagram.modal.Photo" />
+            type="com.example.ktinsta.modal.Photo" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -75,7 +75,7 @@
             app:icon="@drawable/like_svg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />   <!--            app:iconTint="@color/like_back"-->
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <com.google.android.material.button.MaterialButton
