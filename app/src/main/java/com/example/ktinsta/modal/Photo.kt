@@ -4,10 +4,12 @@ import android.util.Log
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.example.instagram.R
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class Photo (){
+data class Photo (private val type : String = ""){
 
 
     @SerializedName("id")
@@ -30,15 +32,17 @@ class Photo (){
     @Expose
     var src: Src? = null
 
+
     companion object {
         @JvmStatic
         @BindingAdapter("glide_image")
         fun loadImage(imageView: ImageView, url: String?) {
-            if (url != null && !url.isEmpty()) {
-                Glide.with(imageView.context).load(url).into(imageView)
-            } else {
-                Log.d("GlideLoad", "Failed")
-            }
+            Glide.with(imageView.context)
+                .load(url)
+                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                .error(R.drawable.connection_error)
+                .into(imageView)
+
         }
     }
 }
