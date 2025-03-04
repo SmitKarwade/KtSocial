@@ -6,10 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import androidx.annotation.OptIn
+import androidx.media3.common.C
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.media3.common.MediaItem
+import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.ui.AspectRatioFrameLayout
 import androidx.media3.ui.PlayerView
 import com.example.instagram.R
 import com.google.android.material.button.MaterialButton
@@ -80,14 +84,18 @@ class ReelAdapter(
             }
         }
 
+        @OptIn(UnstableApi::class)
         fun bindVideo(videoUri: Uri) {
             stopVideo() // Stop any previous playback
 
             exoPlayer = ExoPlayer.Builder(context).build().also { player ->
                 playerView.player = player
+                playerView.resizeMode = AspectRatioFrameLayout.RESIZE_MODE_ZOOM
+
                 val mediaItem = MediaItem.fromUri(videoUri)
                 player.setMediaItem(mediaItem)
                 player.prepare()
+                player.videoScalingMode = C.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING
                 player.playWhenReady = true
                 player.repeatMode = ExoPlayer.REPEAT_MODE_ONE
             }
