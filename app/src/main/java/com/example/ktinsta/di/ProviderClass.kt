@@ -11,13 +11,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class) // <-- Ensure correct Hilt component
+@InstallIn(SingletonComponent::class)
 object ProviderClass {
     @Singleton
     @Provides
     fun provideApi(): ImageService {
         return Retrofit.Builder()
-            .baseUrl(Constants.Base_URL)
+            .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ImageService::class.java)

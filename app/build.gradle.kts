@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     id("com.google.gms.google-services")
-    alias(libs.plugins.kotlin.android)
+    id("org.jetbrains.kotlin.android")
     id("com.google.dagger.hilt.android")
     id("kotlin-kapt")
 }
@@ -61,6 +61,9 @@ dependencies {
     implementation(libs.room.ktx)
     kapt("com.github.bumptech.glide:compiler:4.16.0")  // Corrected from ksp to kapt
 
+    implementation(libs.media3.exoplayer)
+    implementation(libs.media3.ui)
+
     // Lifecycle
     val lifecycle_version = "2.8.7"
     implementation("androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version")
@@ -71,7 +74,7 @@ dependencies {
 
 
     // AndroidX Core
-    implementation(libs.core.ktx)
+    implementation("androidx.core:core-ktx:1.15.0")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
