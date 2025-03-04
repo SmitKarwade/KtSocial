@@ -145,4 +145,9 @@ class ReelFragment : Fragment() {
             }
         }
     }
+
+    override fun onPause() {
+        super.onPause()
+        reelAdapter.currentPlayingHolder?.stopVideo()
+    }
 }
