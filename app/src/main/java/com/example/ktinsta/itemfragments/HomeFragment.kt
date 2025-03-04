@@ -1,7 +1,6 @@
 package com.example.ktinsta.itemfragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
@@ -14,13 +13,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ktinsta.adapter.ImageAdapter
 import com.example.ktinsta.adapter.StoryAdapter
 import com.example.ktinsta.dataorexception.DataOrException
 import com.example.ktinsta.modal.PexelResponse
-import com.example.ktinsta.viewmodel.ImageViewModel
 import com.example.instagram.R
 import com.example.instagram.databinding.FragmentHomeBinding
+import com.example.ktinsta.paging.ImagePagingAdapter
+import com.example.ktinsta.paging.ImageViewModel
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
@@ -29,10 +28,10 @@ class HomeFragment : Fragment() {
     private lateinit var toolbar: Toolbar
     private lateinit var postView: RecyclerView
     private lateinit var storyView: RecyclerView
-    private lateinit var imageAdapter: ImageAdapter
     private lateinit var storyAdapter: StoryAdapter
-    private lateinit var viewModel: ImageViewModel
-    private var liveData: LiveData<DataOrException<PexelResponse, Boolean, Exception>> = MutableLiveData()
+    private lateinit var imagePagingAdapter: ImagePagingAdapter
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,31 +47,32 @@ class HomeFragment : Fragment() {
         toolbar = requireActivity().findViewById(R.id.toolbar)
         toolbar.title = "Instagram"
 
-        viewModel = ViewModelProvider(requireActivity())[ImageViewModel::class.java]
+        val viewModel: ImageViewModel = ViewModelProvider(requireActivity())[ImageViewModel::class.java]
 
         postView = binding!!.postView
         postView.layoutManager = LinearLayoutManager(requireActivity())
+        postView.hasFixedSize()
+        postView.setItemViewCacheSize(10)
 
         storyView = binding!!.storyView
         storyView.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+        storyView.hasFixedSize()
+        storyView.setItemViewCacheSize(10)
 
-        imageAdapter = ImageAdapter(requireActivity())
-        postView.adapter = imageAdapter
+
+        imagePagingAdapter = ImagePagingAdapter(requireActivity())
+        postView.adapter = imagePagingAdapter
 
         storyAdapter = StoryAdapter(requireActivity())
-
         storyView.adapter = storyAdapter
 
-        viewModel.getPostedImages(6, 10)
-        viewModel.data.observe(viewLifecycleOwner) { response ->
-            response.data?.let {
-                imageAdapter.submitList(it.photos)
-                storyAdapter.submitList(it.photos)
+
+        lifecycleScope.launch {
+            viewModel.movieList.collect { pagingData ->
+                imagePagingAdapter.submitData(pagingData)
+                storyAdapter.submitData(pagingData)
             }
         }
-
-
-
 
         postView.removeOnScrollListener(listener)
         postView.addOnScrollListener(listener)
