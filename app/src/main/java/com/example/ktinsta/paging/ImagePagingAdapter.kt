@@ -1,31 +1,21 @@
-package com.example.ktinsta.adapter
+package com.example.ktinsta.paging
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ktinsta.adapter.ImageAdapter.MyViewHolder
-import com.example.ktinsta.modal.Photo
-import com.example.ktinsta.util.ImageDiffUtilCallback
 import com.example.instagram.R
 import com.example.instagram.databinding.PostItemsBinding
-import com.google.android.material.button.MaterialButton
+import com.example.ktinsta.modal.Photo
 
-class ImageAdapter(context: Context) :
-    RecyclerView.Adapter<MyViewHolder>() {
-    private val context: Context
-
-    init {
-        this.context = context
-    }
-
-    private val AsyncListDiffer = AsyncListDiffer(this, ImageDiffUtilCallback())
-
-    fun submitList(listOfPhotos: List<Photo>?) = AsyncListDiffer.submitList(listOfPhotos)
+class ImagePagingAdapter(private val context: Context)
+    : PagingDataAdapter<Photo, ImagePagingAdapter.MyViewHolder>(MOVIE_COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val postItemsBinding = DataBindingUtil.inflate<PostItemsBinding>(
@@ -38,7 +28,7 @@ class ImageAdapter(context: Context) :
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val item = AsyncListDiffer.currentList[position]
+        val item = getItem(position)
         holder.postItemsBinding.photos = item
         holder.postItemsBinding.executePendingBindings()
 
@@ -70,13 +60,31 @@ class ImageAdapter(context: Context) :
                 }
             }
         })
+
+        holder.postItemsBinding.commentIcon.setOnClickListener{
+            Toast.makeText(context, "Comment", Toast.LENGTH_SHORT)
+        }
+
+        holder.postItemsBinding.sendIcon.setOnClickListener{
+            Toast.makeText(context, "Send", Toast.LENGTH_SHORT)
+        }
+
+        holder.postItemsBinding.saveIcon.setOnClickListener{
+            Toast.makeText(context, "Save", Toast.LENGTH_SHORT)
+        }
+
     }
 
-    override fun getItemCount(): Int {
-        return AsyncListDiffer.currentList.size
-    }
+    class MyViewHolder(var postItemsBinding: PostItemsBinding)
+        : RecyclerView.ViewHolder(postItemsBinding.root)
 
-    class MyViewHolder(var postItemsBinding: PostItemsBinding) : RecyclerView.ViewHolder(postItemsBinding.root) {
-        var likeIcon: MaterialButton = postItemsBinding.likeIcon
+    companion object {
+        private val MOVIE_COMPARATOR = object : DiffUtil.ItemCallback<Photo>() {
+            override fun areItemsTheSame(oldItem: Photo, newItem: Photo): Boolean =
+                oldItem.id == newItem.id
+
+            override fun areContentsTheSame(oldItem: Photo, newItem: Photo): Boolean =
+                oldItem.url == newItem.url
+        }
     }
 }
