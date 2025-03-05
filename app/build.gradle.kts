@@ -59,7 +59,7 @@ dependencies {
     // Glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation(libs.room.ktx)
-    kapt("com.github.bumptech.glide:compiler:4.16.0")  // Corrected from ksp to kapt
+    kapt("com.github.bumptech.glide:compiler:4.16.0")
 
     implementation(libs.media3.exoplayer)
     implementation(libs.media3.ui)
